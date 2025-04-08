@@ -111,7 +111,7 @@
             </li>
 
             <li>
-              <a href="/adminData" class="waves-effect">
+              <a href="/admin/murid/nilai" class="waves-effect">
                 <i class="bx bx-file"></i>
                 <span key="t-file-manager">Data Nilai</span>
               </a>

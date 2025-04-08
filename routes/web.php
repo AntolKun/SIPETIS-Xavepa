@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NilaiSiswaController;
 
 
 /*
@@ -32,9 +33,16 @@ Route::middleware(['auth'])->prefix('admin/murid')->name('admin.murid.')->group(
     Route::put('/{id}', [AdminController::class, 'update'])->name('update'); // update data
     Route::delete('/{id}', [AdminController::class, 'destroy'])->name('destroy'); // hapus data
 
-    Route::get('/admin/murid/template', function () {
+    Route::get('/admin/murid/template', function () {   
         return response()->download(public_path('templates/template_siswa.xlsx'));
     })->name('template');
     Route::post('/admin/murid/import', [AdminController::class, 'import'])->name('import');
     Route::post('/admin/murid/bulk-update-status', [AdminController::class, 'bulkUpdateStatus'])->name('bulk-update-status');
+
+    Route::get('/nilai/import', [NilaiSiswaController::class, 'showImportForm'])->name('nilai.import.form');
+    Route::post('/nilai/import', [NilaiSiswaController::class, 'import'])->name('nilai.import');
+
+    Route::get('/nilai', [NilaiSiswaController::class, 'index'])->name('nilai.index');
+    Route::get('/nilai/import', [NilaiSiswaController::class, 'showImportForm'])->name('nilai.import.form');
+    Route::post('/nilai/import', [NilaiSiswaController::class, 'import'])->name('nilai.import');
 });
