@@ -26,9 +26,9 @@ return new class extends Migration {
 
             foreach ($columns as $col) {
                 for ($i = 1; $i <= 3; $i++) {
-                    $table->decimal("{$col}{$i}", 5, 2)->nullable()->change();
+                    $table->decimal("{$col}{$i}", 4, 1)->nullable()->change();
                 }
-                $table->decimal("{$col}_LUS", 5, 2)->nullable()->change();
+                $table->decimal("{$col}_LUS", 4, 1)->nullable()->change();
             }
         });
     }
