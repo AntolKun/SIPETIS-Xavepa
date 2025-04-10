@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Illuminate\Support\Facades\Log;
 
 class NilaiSiswaImport implements ToModel, WithHeadingRow, WithChunkReading, WithBatchInserts
 {
@@ -17,7 +18,10 @@ class NilaiSiswaImport implements ToModel, WithHeadingRow, WithChunkReading, Wit
             $query->where('nisn', $row['nis']);
         })->first();
 
-        if (!$siswa) return null;
+        if (!$siswa) {
+            Log::warning('NIS tidak ditemukan saat import nilai: ' . ($row['nis'] ?? 'N/A'));
+            return null;
+        }
 
         return new NilaiSiswa([
             'siswa_id' => $siswa->id,

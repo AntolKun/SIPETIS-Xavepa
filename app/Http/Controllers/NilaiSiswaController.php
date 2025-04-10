@@ -7,6 +7,7 @@ use App\Imports\NilaiSiswaImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\NilaiSiswa;
 
+
 class NilaiSiswaController extends Controller
 {
     public function showImportForm()
@@ -17,12 +18,17 @@ class NilaiSiswaController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|file|mimes:xlsx,xls'
+            'file' => 'required|mimes:xlsx,xls',
         ]);
 
-        Excel::import(new NilaiSiswaImport, $request->file('file'));
-
-        return redirect()->back()->with('success', 'Data nilai berhasil diimpor!');
+        try {
+            Excel::import(new NilaiSiswaImport, $request->file('file'));
+            return redirect()->back()->with('success', 'Nilai berhasil diimport!');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            return redirect()->back()->with('error', 'Format file tidak sesuai.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat import: ' . $e->getMessage());
+        }
     }
 
     public function index()

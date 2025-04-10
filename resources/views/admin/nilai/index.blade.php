@@ -17,16 +17,23 @@
       <a href="{{ asset('templates/template_nilai.xlsx') }}" class="btn btn-success">
         <i class="bx bx-download"></i> Download Template
       </a>
-      <a href="{{ route('admin.murid.nilai.import.form') }}" class="btn btn-primary">
-        <i class="bx bx-upload"></i> Import Nilai
-      </a>
+      <!-- Form Upload -->
+      <form action="{{ route('admin.murid.nilai.import') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="input-group">
+          <input type="file" name="file" class="form-control" required>
+          <button class="btn btn-primary" type="submit">
+            <i class="bx bx-upload"></i> Upload Nilai
+          </button>
+        </div>
+      </form>
     </div>
   </div>
   <div class="card-body">
     <table id="datatable" class="table table-bordered dt-responsive nowrap w-100" style="border: 3px solid #000000;">
       <thead style="background-color: #3751CF; color: white;">
         <tr>
-          <th rowspan="2">NISN</th>
+          <th rowspan="2">NIS</th>
           <th rowspan="2">Nama</th>
           <th rowspan="2">Kelas</th>
 
@@ -89,19 +96,19 @@
       <tbody>
         @foreach($nilaiList as $nilai)
         <tr>
-          <td>{{ $nilai['nisn'] }}</td>
-          <td>{{ $nilai['nama'] }}</td>
-          <td>{{ $nilai['kelas'] }}</td>
+          <td>{{ $nilai->siswa->user->nisn ?? '-' }}</td>
+          <td>{{ $nilai->siswa->nama ?? '-' }}</td>
+          <td>{{ $nilai->siswa->kelas ?? '-' }}</td>
 
           @php
           $mapels = ['AGM', 'PKN', 'BI', 'MTK', 'IPA', 'IPS', 'BING', 'SB', 'PJS', 'INF', 'BLM', 'BMN', 'PAK'];
           @endphp
 
           @foreach ($mapels as $mapel)
-          <td>{{ $nilai[$mapel . '1'] ?? '' }}</td>
-          <td>{{ $nilai[$mapel . '2'] ?? '' }}</td>
-          <td>{{ $nilai[$mapel . '3'] ?? '' }}</td>
-          <td>{{ $nilai[$mapel . 'LUS'] ?? '' }}</td>
+          <td>{{ $nilai[$mapel.'1'] ?? '-' }}</td>
+          <td>{{ $nilai[$mapel.'2'] ?? '-' }}</td>
+          <td>{{ $nilai[$mapel.'3'] ?? '-' }}</td>
+          <td>{{ $nilai[$mapel.'_LUS'] ?? '-' }}</td>
           @endforeach
         </tr>
         @endforeach
