@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NilaiSiswaController;
+use App\Http\Controllers\SiswaController;
 
 
 /*
@@ -25,7 +26,7 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::middleware(['auth'])->prefix('admin/murid')->name('admin.murid.')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin/murid')->name('admin.murid.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index'); // tampil semua siswa
     Route::get('/create', [AdminController::class, 'create'])->name('create'); // form tambah
     Route::post('/', [AdminController::class, 'store'])->name('store'); // simpan data baru
@@ -45,4 +46,12 @@ Route::middleware(['auth'])->prefix('admin/murid')->name('admin.murid.')->group(
     Route::get('/nilai', [NilaiSiswaController::class, 'index'])->name('nilai.index');
     Route::get('/nilai/import', [NilaiSiswaController::class, 'showImportForm'])->name('nilai.import.form');
     Route::post('/nilai/import', [NilaiSiswaController::class, 'import'])->name('nilai.import');
+});
+
+Route::middleware(['auth', 'role:murid'])->group(function () {
+    Route::put('/siswa/password/update', [SiswaController::class, 'updatePassword'])->name('siswa.password.update');
+    Route::get('/siswa/dashboard', function () {
+        return view('siswa.dashboard');
+    })->name('siswa.dashboard');
+    Route::get('/siswa/nilai/download', [App\Http\Controllers\SiswaController::class, 'downloadNilai'])->name('siswa.nilai.download');
 });

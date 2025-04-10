@@ -15,10 +15,21 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('nisn', 'password');
+        $credentials = [
+            'nisn' => $request->nisn,
+            'password' => $request->password,
+        ];
+
         if (Auth::attempt($credentials)) {
-            return redirect('/admin/murid');
+            $user = Auth::user();
+
+            if ($user->role === 'admin') {
+                return redirect('/admin/murid');
+            } elseif ($user->role === 'murid') {
+                return redirect('/siswa/dashboard');
+            }
         }
+
         return redirect()->back()->withErrors(['NIS atau password salah.']);
     }
 
