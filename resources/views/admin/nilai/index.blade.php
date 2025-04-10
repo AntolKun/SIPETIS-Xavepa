@@ -138,6 +138,7 @@
 <!-- Datatable init js -->
 <script src="{{ asset('skoteassets/js/pages/datatables.init.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @if ($message = session()->get('success'))
 <script type="text/javascript">
   Swal.fire({

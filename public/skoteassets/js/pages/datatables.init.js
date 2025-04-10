@@ -2,6 +2,7 @@ $(document).ready(function () {
     $("#datatable").DataTable({
         scrollX: true,
         responsive: false,
+        pageLength: 50,
     }),
         $("#datatable-buttons")
             .DataTable({
