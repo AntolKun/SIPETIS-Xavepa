@@ -11,7 +11,7 @@
     .kop-surat {
       position: relative;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .kop-logo {
@@ -29,13 +29,13 @@
 
     .kop-border {
       border-bottom: 2px solid black;
-      margin-top: 10px;
-      margin-bottom: 5px;
+      margin-top: 5px;
+      margin-bottom: 1px;
     }
 
     .kop-border2 {
       border-bottom: 2px solid black;
-      margin-top: 5px;
+      margin-top: 1px;
       margin-bottom: 20px;
     }
 
@@ -91,23 +91,27 @@
 
   <h4 style="text-align: center; margin-bottom: 10px;">LAPORAN HASIL BELAJAR PESERTA DIDIK<br>TENGAH SEMESTER GANJIL</h4>
 
-  <table class="no-border" style="margin-bottom: 20px;">
+  <!-- <h4 style="margin-bottom: 1px;">Nama  : {{ $siswa->nama }}</h4>
+  <h4 style="margin-bottom: 1px;">NIS   : {{ $siswa->user->nisn }}</h4>
+  <h4>Kelas : {{ $siswa->kelas }}</h4> -->
+
+  <table style="margin-bottom: 20px;">
     <tr>
-      <td class="no-border">Nama</td>
-      <td class="no-border">: {{ $siswa->nama }}</td>
+      <td>Nama</td>
+      <td>{{ $siswa->nama }}</td>
     </tr>
     <tr>
-      <td class="no-border">NIS</td>
-      <td class="no-border">: {{ $siswa->user->nisn }}</td>
+      <td>NIS</td>
+      <td>{{ $siswa->user->nisn }}</td>
     </tr>
     <tr>
-      <td class="no-border">Kelas</td>
-      <td class="no-border">: {{ $siswa->kelas }}</td>
+      <td>Kelas</td>
+      <td>{{ $siswa->kelas }}</td>
     </tr>
   </table>
 
   <table class="table-nilai">
-    <thead>
+    <thead style="background-color: #3751CF; color: white;">
       <tr>
         <th rowspan="2">MATA PELAJARAN</th>
         <th colspan="4">NILAI</th>

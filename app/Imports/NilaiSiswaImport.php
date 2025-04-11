@@ -34,62 +34,62 @@ class NilaiSiswaImport implements ToModel, WithHeadingRow, WithChunkReading, Wit
             'PKN1' => $row['pkn1'] ?? null,
             'PKN2' => $row['pkn2'] ?? null,
             'PKN3' => $row['pkn3'] ?? null,
-            'PKN_LUS' => $row['lus_2'] ?? null,
+            'PKN_LUS' => $row['lus_1'] ?? null,
 
             'BI1' => $row['bi1'] ?? null,
             'BI2' => $row['bi2'] ?? null,
             'BI3' => $row['bi3'] ?? null,
-            'BI_LUS' => $row['lus_3'] ?? null,
+            'BI_LUS' => $row['lus_2'] ?? null,
 
             'MTK1' => $row['mtk1'] ?? null,
             'MTK2' => $row['mtk2'] ?? null,
             'MTK3' => $row['mtk3'] ?? null,
-            'MTK_LUS' => $row['lus_4'] ?? null,
+            'MTK_LUS' => $row['lus_3'] ?? null,
 
             'IPA1' => $row['ipa1'] ?? null,
             'IPA2' => $row['ipa2'] ?? null,
             'IPA3' => $row['ipa3'] ?? null,
-            'IPA_LUS' => $row['lus_5'] ?? null,
+            'IPA_LUS' => $row['lus_4'] ?? null,
 
             'IPS1' => $row['ips1'] ?? null,
             'IPS2' => $row['ips2'] ?? null,
             'IPS3' => $row['ips3'] ?? null,
-            'IPS_LUS' => $row['lus_6'] ?? null,
+            'IPS_LUS' => $row['lus_5'] ?? null,
 
             'BING1' => $row['bing1'] ?? null,
             'BING2' => $row['bing2'] ?? null,
             'BING3' => $row['bing3'] ?? null,
-            'BING_LUS' => $row['lus_7'] ?? null,
+            'BING_LUS' => $row['lus_6'] ?? null,
 
             'SB1' => $row['sb1'] ?? null,
             'SB2' => $row['sb2'] ?? null,
             'SB3' => $row['sb3'] ?? null,
-            'SB_LUS' => $row['lus_8'] ?? null,
+            'SB_LUS' => $row['lus_7'] ?? null,
 
             'PJS1' => $row['pjs1'] ?? null,
             'PJS2' => $row['pjs2'] ?? null,
             'PJS3' => $row['pjs3'] ?? null,
-            'PJS_LUS' => $row['lus_9'] ?? null,
+            'PJS_LUS' => $row['lus_8'] ?? null,
 
             'INF1' => $row['inf1'] ?? null,
             'INF2' => $row['inf2'] ?? null,
             'INF3' => $row['inf3'] ?? null,
-            'INF_LUS' => $row['lus_10'] ?? null,
+            'INF_LUS' => $row['lus_9'] ?? null,
 
             'BLM1' => $row['blm1'] ?? null,
             'BLM2' => $row['blm2'] ?? null,
             'BLM3' => $row['blm3'] ?? null,
-            'BLM_LUS' => $row['lus_11'] ?? null,
+            'BLM_LUS' => $row['lus_10'] ?? null,
 
             'BMN1' => $row['bmn1'] ?? null,
             'BMN2' => $row['bmn2'] ?? null,
             'BMN3' => $row['bmn3'] ?? null,
-            'BMN_LUS' => $row['lus_12'] ?? null,
+            'BMN_LUS' => $row['lus_11'] ?? null,
 
             'PAK1' => $row['pak1'] ?? null,
             'PAK2' => $row['pak2'] ?? null,
             'PAK3' => $row['pak3'] ?? null,
-            'PAK_LUS' => $row['lus_13'] ?? null,
+            'PAK_LUS' => $row['lus_12'] ?? null,
         ]);
     }
 
